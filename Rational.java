@@ -1,10 +1,11 @@
-/* Team FeelTheBernieSanders -- Grace Stempel and Zicheng Zhen
+/* Team FeelTheBernieSanders -- Grace Stempel
    APCS1 pd10 
-   HW33 -- Do You Even Add, Bro?
-   2015-11-19 */
+   HW37 -- Rational Equality
+   2015-11-25 */
 
 // Rational Class
 public class Rational {
+    
     // Instance Variables
     private int numer;
     private int denom;
@@ -122,6 +123,18 @@ public class Rational {
 	if (numer * r.getDenom() > r.getNumer() * denom) {return 1;}
 	return -999;
     }
+
+    //Equals Method
+    //Takes Object obj - returns true if obj is of class Rational 
+    //                 - and of equal value to calling istance of Rational
+    //                 - returns false otherwise
+    public boolean equals(Object obj) {
+	return (
+	    (obj instanceof Rational) && 
+	    (numer == ((Rational)obj).getNumer()) && 
+	    (denom == ((Rational)obj).getDenom())
+		);
+    }
     
     // Testing
     public static void main(String[] args) {
@@ -163,5 +176,16 @@ public class Rational {
 	foo.divide(new Rational(-5,3)); // foo = -54 / 5
 	System.out.println(foo);
 	System.out.println(foo.compareTo(new Rational(108,-10)));
+
+	Rational boo = new Rational(1,1); // boo = 1
+	Rational loo = new Rational(1,1); // loo = 1
+	Rational moo = new Rational(5,1); // moo = 5
+	Object woo = new Object();
+	System.out.println("boo equals loo? ");
+	System.out.println(boo.equals(loo)); //return true
+	System.out.println("boo equals moo? ");
+	System.out.println(boo.equals(moo)); //return false
+	System.out.println("loo equals moo? ");
+	System.out.println(loo.equals(moo)); //return false
     }
 }
